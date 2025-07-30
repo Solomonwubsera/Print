@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Print & Subscribe</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f9f9f9; margin: 0; padding: 0; }
+    .container { max-width: 900px; margin: auto; padding: 2rem; }
+    h1, h2, h3 { text-align: center; }
+    form, .tab-content { background: white; padding: 1rem; margin-top: 1rem; border-radius: 0.5rem; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    input, textarea, button, select { width: 100%; padding: 0.75rem; margin-top: 0.5rem; margin-bottom: 1rem; border-radius: 0.3rem; border: 1px solid #ccc; }
+    button { background: #2563eb; color: white; border: none; cursor: pointer; }
+    button:hover { background: #1d4ed8; }
+    .tabs { display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; }
+    .tabs button { background: #e5e7eb; color: #111; }
+    .tabs button.active { background: #2563eb; color: white; }
+    .hidden { display: none; }
+    ul li a { color: #2563eb; text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Print & Subscribe</h1>
+
+    <h2>Subscribe to Our Printing Services</h2>
+    <form>
+      <input type="text" placeholder="Full Name" required />
+      <input type="email" placeholder="Email Address" required />
+      <input type="text" placeholder="Phone Number" required />
+      <input type="text" placeholder="Shipping Address" required />
+      <button type="submit">Subscribe</button>
+    </form>
+
+    <div class="tabs">
+      <button onclick="showTab('photos')" class="active">Photos</button>
+      <button onclick="showTab('tshirts')">T-Shirts</button>
+      <button onclick="showTab('mugs')">Mugs</button>
+      <button onclick="showTab('templates')">Templates</button>
+    </div>
+
+    <div id="photos" class="tab-content">
+      <h3>Order Printed Photos</h3>
+      <input type="file" />
+      <textarea placeholder="Size, quantity, description"></textarea>
+      <button>Place Order</button>
+    </div>
+
+    <div id="tshirts" class="tab-content hidden">
+      <h3>Custom T-Shirts</h3>
+      <input type="file" />
+      <textarea placeholder="Color, size, print position, quantity"></textarea>
+      <button>Place Order</button>
+    </div>
+
+    <div id="mugs" class="tab-content hidden">
+      <h3>Print on Mugs</h3>
+      <input type="file" />
+      <textarea placeholder="Mug type, quantity, print notes"></textarea>
+      <button>Place Order</button>
+    </div>
+
+    <div id="templates" class="tab-content hidden">
+      <h3>Flyer & Brochure Templates</h3>
+      <ul>
+        <li><a href="#">Download Flyer Template (PDF)</a></li>
+        <li><a href="#">Download Brochure Template (Word)</a></li>
+        <li><a href="#">Download Poster Template (Canva)</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(div => div.classList.add('hidden'));
+      document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(tabId).classList.remove('hidden');
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
